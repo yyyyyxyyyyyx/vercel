@@ -3,30 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Block Layout</title>
+    <title>Centered Blocks Layout</title>
     <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .block-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* 间隔 */
+        }
+
         .block {
             display: flex;
             align-items: center;
             border: 1px solid #ccc;
             padding: 10px;
-            max-width: 500px;
+            max-width: 600px;
+            width: 100%;
         }
+
         .block img {
             width: 150px;
             height: auto;
             margin-right: 20px;
         }
+
         .content {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
         }
+
         .content h2 {
             margin: 0;
             font-size: 1.5em;
         }
+
         .content a {
             text-decoration: none;
             color: #007BFF;
@@ -36,11 +64,26 @@
 </head>
 <body>
 
-<div class="block">
-    <img src="vv.jpg" alt="Image description">
-    <div class="content">
-        <h2>2024抓马综艺 范德普别墅 Vanderpump Villa 【全集】</h2>
-        <a href="https://pan.quark.cn/s/28ac88e4785f#/list/share">夸克直达</a>
+<h1>感谢各位粉丝的支持！</h1>
+
+<h2>欢迎关注b站 @609498878
+<a href="https://space.bilibili.com/8081175"> 关注b站</a></h2>
+
+<div class="block-container">
+    <div class="block">
+        <img src="vv.jpg" alt="Image description">
+        <div class="content">
+            <h2>2024抓马综艺 范德普别墅 Vanderpump Villa 【全11集】</h2>
+            <a href="https://pan.quark.cn/s/28ac88e4785f#/list/share">夸克网盘</a>
+        </div>
+    </div>
+
+    <div class="block">
+        <img src="om.jpg" alt="Image description">
+        <div class="content">
+            <h2>2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan 【全8集】</h2>
+            <a href="https://pan.baidu.com/s/19ZVhbTPPXTrfrtkXLnmQOw?pwd=6kkp">百度网盘</a>
+        </div>
     </div>
 </div>
 

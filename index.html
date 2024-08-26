@@ -3,22 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Vercel Website</title>
+    <title>Block Layout</title>
     <style>
-        body {
+        .block {
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 500px;
         }
-        h1 {
-            color: #0070f3;
+        .block img {
+            width: 150px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .content h2 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .content a {
+            text-decoration: none;
+            color: #007BFF;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to My Website!</h1>
+
+<div class="block">
+    <img src="vv.jpg" alt="Image description">
+    <div class="content">
+        <h2>2024抓马综艺 范德普别墅 Vanderpump Villa 【全集】</h2>
+        <a href="https://pan.quark.cn/s/28ac88e4785f#/list/share">夸克直达</a>
+    </div>
+</div>
+
 </body>
 </html>

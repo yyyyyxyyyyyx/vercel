@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centered Blocks Layout</title>
+    <title>b站@609498878</title>
     <style>
         body {
             margin: 0;
@@ -12,34 +12,53 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            color: #333;
         }
 
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
 
         .block-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px; /* 间隔 */
+            gap: 30px; /* 增加间隔 */
         }
 
         .block {
             display: flex;
             align-items: center;
-            border: 1px solid #ccc;
-            padding: 10px;
-            max-width: 600px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            max-width: 700px;
             width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .block img {
             width: 150px;
             height: auto;
+            border-radius: 8px;
             margin-right: 20px;
         }
 
@@ -53,12 +72,19 @@
         .content h2 {
             margin: 0;
             font-size: 1.5em;
+            color: #444;
         }
 
         .content a {
             text-decoration: none;
             color: #007BFF;
-            font-size: 1em;
+            font-size: 1.1em;
+            margin-top: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .content a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
@@ -66,23 +92,22 @@
 
 <h1>感谢各位粉丝的支持！</h1>
 
-<h2>欢迎关注b站 @609498878
-<a href="https://space.bilibili.com/8081175"> 关注b站</a></h2>
+<h2>欢迎关注b站 @609498878 <a href="https://space.bilibili.com/8081175" target="_blank">关注b站</a></h2>
 
 <div class="block-container">
     <div class="block">
-        <img src="vv.jpg" alt="Image description">
+        <img src="vv.jpg" alt="2024抓马综艺 范德普别墅 Vanderpump Villa">
         <div class="content">
             <h2>2024抓马综艺 范德普别墅 Vanderpump Villa 【全11集】</h2>
-            <a href="https://pan.quark.cn/s/28ac88e4785f#/list/share">夸克网盘</a>
+            <a href="https://pan.quark.cn/s/28ac88e4785f#/list/share" target="_blank">夸克网盘</a>
         </div>
     </div>
 
     <div class="block">
-        <img src="om.jpg" alt="Image description">
+        <img src="om.jpg" alt="2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan">
         <div class="content">
             <h2>2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan 【全8集】</h2>
-            <a href="https://pan.baidu.com/s/19ZVhbTPPXTrfrtkXLnmQOw?pwd=6kkp">百度网盘</a>
+            <a href="https://pan.baidu.com/s/19ZVhbTPPXTrfrtkXLnmQOw?pwd=6kkp" target="_blank">百度网盘</a>
         </div>
     </div>
 </div>

@@ -58,7 +58,7 @@
             max-width: 640px;
         }
 
-
+        /*block的样式*/
         .block-container {
             display: flex;
             flex-direction: column;
@@ -123,6 +123,7 @@
             color: #0056b3;
         }
 
+        /*公告栏样式*/
         .announcement-bar {
             width: 100%;
             background: linear-gradient(to right, #44A08D, #093637);
@@ -133,6 +134,88 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        /* 弹窗的样式 */
+        .custom-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .custom-dialog h3 {
+            margin-top: 0;
+        }
+
+        .custom-dialog .dialog-actions {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .custom-dialog .dialog-actions a {
+            text-decoration: none;
+            color: #44A08D;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .custom-dialog .dialog-actions button {
+            padding: 5px 10px;
+            border: none;
+            background-color: #44A08D;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+
+        /*点赞的样式*/
+        .like-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .like-button {
+            background-color: #44A08D; 
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .like-button:hover {
+            background-color: #FF6347; /* Slightly lighter orange on hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px); /* Move the button up a little on hover */
+        }
+
+        #like-count {
+            font-weight: bold;
+            margin-left: 8px;
+            font-size: 1.2em;
+            color: #FF4500; /* Match the like button color */
+        }
+
         footer {
             margin-top: 40px;
             font-size: 0.8em;
@@ -140,6 +223,26 @@
         }
 
     </style>
+
+<script>
+    function showCustomDialog(url) {
+        // 显示遮罩层和自定义弹窗
+        document.querySelector('.overlay').style.display = 'block';
+        document.querySelector('.custom-dialog').style.display = 'block';
+
+        // 给 "确定" 按钮绑定跳转链接
+        document.querySelector('.confirm-btn').onclick = function() {
+            window.location.href = url;
+        };
+    }
+
+    function closeCustomDialog() {
+        // 关闭自定义弹窗和遮罩层
+        document.querySelector('.overlay').style.display = 'none';
+        document.querySelector('.custom-dialog').style.display = 'none';
+    }
+</script>
+
 </head>
 <body>
 
@@ -166,38 +269,79 @@
     </ul>
 
     思考要不要补档的：
-
     <ul>
-        <li>美哉琉璃：巧匠大比拼第四季 Blown Away</li>
         <li>这是蛋糕吗第二季 Is it a cake?</li>
     </ul>
 
     如果有迫不及待想看的，欢迎b站留言催更！</h3>
 
+<!-- 弹窗 -->
+<div class="overlay"></div>
+
+<div class="custom-dialog">
+    <h3>无偿搬运不易，求b站关注+一键三连！支持越多，搬运越快哦！</h3>
+    <p><a href="https://space.bilibili.com/8081175" target="_blank">b站 @609498878</a></p>
+    <div class="dialog-actions">
+        <button class="confirm-btn">我已支持</button>
+        <a onclick="closeCustomDialog()">取消</a>
+    </div>
+</div>
+
+
+<div class="like-container">
+    <button id="likeButton" class="like-button">👍 喜欢就点个赞吧</button>
+    <p>赞: <span id="likeCount">0</span></p>
+</div>
+
+
+<script>
+    // Fetch like count
+    fetch('http://localhost:3000/like-count')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('likeCount').textContent = data.like_count;
+        });
+
+    // Like button event
+    document.getElementById('likeButton').addEventListener('click', () => {
+        fetch('http://localhost:3000/like', {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(() => {
+            fetch('http://localhost:3000/like-count')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('likeCount').textContent = data.like_count;
+                });
+        });
+    });
+</script>
+
 <div class="block-container">
     <h2>2024入股不亏综艺专区</h2>
-    <a href="om.html" class="block">
+    <a href="om.html" class="block" onclick="event.preventDefault(); showCustomDialog('om.html')">
         <img src="om.jpg" alt="2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan">
         <div class="content">
             <h2>【熟肉】2024超好看新综 曼哈顿金牌经纪 Owning Manhattan 【全8集】</h2>
         </div>
     </a>
 
-    <a href="br.html" class="block">
+    <a href="br.html" class="block" onclick="event.preventDefault(); showCustomDialog('br.html')">
         <img src="br.jpg" alt="2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】">
         <div class="content">
             <h2>【熟肉】2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】</h2>
         </div>
     </a>
 
-    <a href="bbh.html" class="block">
+    <a href="bbh.html" class="block" onclick="event.preventDefault(); showCustomDialog('bbh.html')">
         <img src="bbh.jpg" alt="2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】">
         <div class="content">
             <h2>【熟肉】2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】</h2>
         </div>
     </a>
 
-    <a href="ba.html" class="block">
+    <a href="ba.html" class="block" onclick="event.preventDefault(); showCustomDialog('ba.html')">
         <img src="ba.jpg" alt="2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】">
         <div class="content">
             <h2>【熟肉】2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】</h2>
@@ -205,14 +349,14 @@
     </a>
 
     <h2>太后Lisa Vanderpump专区</h2>
-    <a href="vv.html" class="block">
+    <a href="vv.html" class="block" onclick="event.preventDefault(); showCustomDialog('vv.html')">
         <img src="vv.jpg" alt="2024抓马综艺 范德普别墅 Vanderpump Villa">
         <div class="content">
             <h2>【熟肉】2024抓马综艺 范德普别墅 豪宅牛马 Vanderpump Villa 【全11集】</h2>
         </div>
     </a>
 
-    <a href="vpr.html" class="block">
+    <a href="vpr.html" class="block" onclick="event.preventDefault(); showCustomDialog('vpr.html')">
         <img src="vpr.jpg" alt="2024太后经典狗血大戏 太后的规则 Vanderpump Rules">
         <div class="content">
             <h2>【生肉】2024太后经典狗血大戏 太后的规则 Vanderpump Rules 第11季 【资源巨难找，更到EP10，别急】</h2>
@@ -221,7 +365,37 @@
 
 </div>
 
+<!--
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const likeBtn = document.getElementById("like-btn");
+        const likeCountSpan = document.getElementById("like-count");
+
+        // 获取当前的点赞数
+        fetch('/get-likes')
+            .then(response => response.json())
+            .then(data => {
+                likeCountSpan.textContent = data.likes;
+            })
+            .catch(error => console.error('Error fetching like count:', error));  // 添加错误处理
+
+        // 处理点赞按钮的点击事件
+        likeBtn.addEventListener("click", function() {
+            fetch('/like', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    likeCountSpan.textContent = data.likes;
+                })
+                .catch(error => console.error('Error updating like count:', error));  // 添加错误处理
+        });
+    });
+</script>
+-->
+
+
 </body>
+
+
 
 <footer>
         <p>视频资源仅用于测试和学习交流，一切版权归原创者所有。</p>

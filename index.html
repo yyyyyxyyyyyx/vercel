@@ -296,7 +296,7 @@
 
 <script>
     // Fetch like count
-    fetch('http://localhost:3000/api/like-count')
+    fetch('/api/like-count')
         .then(response => response.json())
         .then(data => {
             document.getElementById('likeCount').textContent = data.like_count;
@@ -304,12 +304,12 @@
 
     // Like button event
     document.getElementById('likeButton').addEventListener('click', () => {
-        fetch('http://localhost:3000/api/like', {
+        fetch('/api/like', {
             method: 'POST'
         })
         .then(response => response.json())
         .then(() => {
-            fetch('http://localhost:3000/api/like')
+            fetch('/api/like')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('likeCount').textContent = data.like_count;

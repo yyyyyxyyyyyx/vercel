@@ -287,33 +287,36 @@
     </div>
 </div>
 
-<!--
+
 <div class="like-container">
     <button id="likeButton" class="like-button">👍 喜欢就点个赞吧</button>
     <p>赞: <span id="likeCount">0</span></p>
 </div>
--->
+
 
 <script>
-    // Fetch like count
-    fetch('/api/like-count')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('likeCount').textContent = data.like_count;
-        });
+    document.addEventListener("DOMContentLoaded", function() {
+        // Fetch like count when the page loads
+        fetch('/api/like-count')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('likeCount').textContent = data.like_count;
+            })
+            .catch(error => console.error('Error fetching like count:', error));
 
-    // Like button event
-    document.getElementById('likeButton').addEventListener('click', () => {
-        fetch('/api/like', {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(() => {
-            fetch('/api/like')
+        // Like button event
+        document.getElementById('likeButton').addEventListener('click', () => {
+            fetch('/api/like', { method: 'POST' })
+                .then(response => response.json())
+                .then(() => {
+                    // Fetch the updated like count after liking
+                    return fetch('/api/like-count');
+                })
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('likeCount').textContent = data.like_count;
-                });
+                })
+                .catch(error => console.error('Error:', error));
         });
     });
 </script>

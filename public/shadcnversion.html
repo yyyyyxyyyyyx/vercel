@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T4ZSFTLT');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-01504QX7SD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-01504QX7SD');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b站@609498878</title>
+    
+    <!-- 引入 Tailwind CSS -->
+    <link href="tailwind.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50 text-gray-900 flex flex-col items-center min-h-screen pt-8">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4ZSFTLT"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Shadcn 弹窗 -->
+    <div id="dialog" class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h3 class="text-lg font-semibold mb-4">无偿搬运不易，求b站关注+一键三连！支持越多，搬运越快哦！</h3>
+            <p class="mb-4"><a href="https://space.bilibili.com/8081175" target="_blank" class="text-blue-500 hover:text-blue-700">b站 @609498878</a></p>
+            <div class="flex justify-end space-x-4">
+                <button id="confirm-btn" class="bg-green-500 text-white px-4 py-2 rounded">我已支持</button>
+                <button id="close-btn" class="bg-gray-300 text-black px-4 py-2 rounded">取消</button>
+            </div>
+        </div>
+    </div>
+
+
+    <h1 class="text-3xl font-bold mb-4 text-center">感谢各位粉丝的支持！</h1>
+
+    <h2 class="text-xl font-medium mb-6 text-center">
+        欢迎关注b站 @609498878，你的一键三连就是最大的支持！ 
+        <a href="https://space.bilibili.com/8081175" target="_blank" class="text-blue-600 hover:underline">关注b站</a>
+    </h2>
+
+    <!-- 公告栏 -->
+    <div class="w-full bg-gradient-to-r from-teal-500 to-gray-800 text-white p-3 text-center font-bold shadow-md">
+        up主留言：之前上传在b站的视频全军覆没了，应该是被举报而不是自动的。大家的点赞留言都超级棒，如果这里也被冲了，就彻底放弃，不会再更新，且看且珍惜！
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="overlay" class="fixed inset-0 bg-black opacity-50 z-40 hidden"></div>
+
+    <div id="dialog" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-50 hidden">
+        <h3 class="text-lg font-medium mb-4">无偿搬运不易，求b站关注+一键三连！支持越多，搬运越快哦！</h3>
+        <p class="mb-6"><a href="https://space.bilibili.com/8081175" target="_blank" class="text-blue-600 hover:underline">b站 @609498878</a></p>
+        <div class="text-right">
+            <button id="confirmButton" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">我已支持</button>
+            <button id="cancelButton" class="ml-2 text-teal-600 hover:underline">取消</button>
+        </div>
+    </div>
+
+    <!-- 点赞按钮 -->
+    <div class="mt-8 text-center">
+        <button id="likeButton" class="bg-teal-600 text-white px-6 py-3 rounded-full text-lg font-medium shadow-lg hover:bg-red-400 transition-all">
+            👍 喜欢就点个赞吧
+        </button>
+        <p class="mt-2 text-lg font-semibold text-red-500">赞: <span id="likeCount">0</span></p>
+    </div>
+
+    <!-- 视频块 -->
+    <div class="block-container flex flex-col items-center gap-6 mt-8">
+        <h2 class="text-2xl font-medium">2024入股不亏综艺专区</h2>
+        <a href="om.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="om.html">
+            <img src="assets/om.jpg" alt="2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024超好看新综 曼哈顿金牌经纪 Owning Manhattan 【全8集】</h2>
+            </div>
+        </a>
+        <a href="mc.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="mc.html">
+            <img src="assets/mc.jpg" alt="2024长青综艺回归 厨艺大师第14季 MasterChef" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【生肉】2024长青综艺回归 厨艺大师第14季 MasterChef 【更至EP13】</h2>
+            </div>
+        </a>
+        
+        <a href="tar36.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="tar36.html">
+            <img src="assets/tar36.jpg" alt="2024经典综艺回归 极速前进第36季 The Amazing Race" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024经典综艺回归 极速前进第36季 The Amazing Race 【更至EP1】</h2>
+            </div>
+        </a>
+
+        <a href="br.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="br.html">
+            <img src="assets/br.jpg" alt="2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】</h2>
+            </div>
+        </a>
+
+        <a href="bbh.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="bbh.html">
+            <img src="assets/bbh.jpg" alt="2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】</h2>
+            </div>
+        </a>
+
+        <a href="ba.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="ba.html">
+            <img src="assets/ba.jpg" alt="2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】</h2>
+            </div>
+        </a>
+
+        <h2 class="text-2xl font-bold mt-8 mb-4">太后Lisa Vanderpump专区</h2>
+
+        <a href="vv.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="vv.html">
+            <img src="assets/vv.jpg" alt="2024抓马综艺 范德普别墅 Vanderpump Villa" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【熟肉】2024抓马综艺 范德普别墅 豪宅牛马 Vanderpump Villa 【全11集】</h2>
+            </div>
+        </a>
+
+        <a href="vpr.html" class="block flex items-center border border-gray-200 bg-white p-4 rounded-lg shadow-md max-w-xl w-full hover:shadow-lg transition-all" data-url="vpr.html">
+            <img src="assets/vpr.jpg" alt="2024太后经典狗血大戏 太后的规则 Vanderpump Rules" class="w-32 h-auto rounded-lg mr-4">
+            <div class="flex flex-col justify-between">
+                <h2 class="text-xl font-medium text-gray-800">【生肉】2024太后经典狗血大戏 太后的规则 Vanderpump Rules 第11季 【资源巨难找，更至EP11，别急】</h2>
+            </div>
+        </a>
+
+    </div>
+
+    <footer class="mt-12 text-sm text-gray-600 py-8">
+        <p>视频资源仅用于测试和学习交流，一切版权归原创者所有。</p>
+    </footer>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const dialog = document.getElementById('dialog');
+        const confirmBtn = document.getElementById('confirm-btn');
+        const closeBtn = document.getElementById('close-btn');
+        let redirectUrl = '';
+
+        function showCustomDialog(url) {
+            // 显示 Shadcn 弹窗
+            dialog.classList.remove('hidden');
+            redirectUrl = url;
+        }
+
+        function closeCustomDialog() {
+            // 关闭 Shadcn 弹窗
+            dialog.classList.add('hidden');
+        }
+
+        // 点击 "确定" 按钮时跳转到指定 URL
+        confirmBtn.addEventListener('click', function() {
+            window.location.href = redirectUrl;
+        });
+
+        // 点击 "取消" 按钮时关闭弹窗
+        closeBtn.addEventListener('click', closeCustomDialog);
+
+        // 事件委托处理点击事件
+        document.querySelector('.block-container').addEventListener('click', function(event) {
+            const target = event.target.closest('.block');
+            if (target) {
+                event.preventDefault(); // 阻止默认链接行为
+                showCustomDialog(target.getAttribute('data-url'));
+            }
+        });
+    });
+    </script>
+
+</body>
+</html>

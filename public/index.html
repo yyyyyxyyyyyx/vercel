@@ -21,6 +21,9 @@
     </script>
 
 
+    <link href="/public/tailwind.css" rel="stylesheet">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>b站@609498878</title>
@@ -363,46 +366,25 @@
     <a href="vpr.html" class="block" onclick="event.preventDefault(); showCustomDialog('vpr.html')">
         <img src="assets/vpr.jpg" alt="2024太后经典狗血大戏 太后的规则 Vanderpump Rules">
         <div class="content">
-            <h2>【生肉】2024太后经典狗血大戏 太后的规则 Vanderpump Rules 第11季 【资源巨难找，更至EP11，别急】</h2>
+            <h2>【生肉】2024太后经典狗血大戏 太后的规则 Vanderpump Rules 第11季 【资源巨难找，更至EP13，别急】</h2>
+        </div>
+    </a>
+
+    <a href="fs.html" class="block" onclick="event.preventDefault(); showCustomDialog('fs.html')">
+        <img src="assets/fs.jpg" alt="2024狗蛋vs太后 美食未来星第二季 Gordon Ramsay's Future Food Stars">
+        <div class="content">
+            <h2>【生肉】2024狗蛋vs太后 美食未来星第二季 Gordon Ramsay's Future Food Stars 【更至EP02】</h2>
         </div>
     </a>
 
 </div>
 
-<!--
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const likeBtn = document.getElementById("like-btn");
-        const likeCountSpan = document.getElementById("like-count");
-
-        // 获取当前的点赞数
-        fetch('/get-likes')
-            .then(response => response.json())
-            .then(data => {
-                likeCountSpan.textContent = data.likes;
-            })
-            .catch(error => console.error('Error fetching like count:', error));  // 添加错误处理
-
-        // 处理点赞按钮的点击事件
-        likeBtn.addEventListener("click", function() {
-            fetch('/like', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    likeCountSpan.textContent = data.likes;
-                })
-                .catch(error => console.error('Error updating like count:', error));  // 添加错误处理
-        });
-    });
-</script>
--->
-
 
 </body>
-
-
 
 <footer>
         <p>视频资源仅用于测试和学习交流，一切版权归原创者所有。</p>
 </footer>
 
 </html>
+

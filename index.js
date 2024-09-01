@@ -68,6 +68,47 @@ app.post('/api/like', async (req, res) => {
     }
 });
 
+// Get comments
+app.get('/api/comments', async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('comments')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            throw error;
+        }
+
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+// Add a new comment
+app.post('/api/comments', async (req, res) => {
+    try {
+        const { content } = req.body;
+
+        if (!content) {
+            return res.status(400).json({ error: 'Content is required' });
+        }
+
+        const { data, error } = await supabase
+            .from('comments')
+            .insert([{ content }]);
+
+        if (error) {
+            throw error;
+        }
+
+        res.json(data[0]);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);

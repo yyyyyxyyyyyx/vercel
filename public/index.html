@@ -303,6 +303,21 @@
             font-style: italic;
         }
 
+        /*临时公告*/
+        .temp-announce {
+            background-color: #fffbec; /* 淡黄色背景 */
+            color: #333; /* 字体颜色 */
+            border: 2px solid #f5c518; /* 边框颜色 */
+            border-radius: 12px; /* 圆角 */
+            padding: 16px; /* 内边距 */
+            max-width: 600px; /* 最大宽度 */
+            margin: 16px auto; /* 上下外边距，居中 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+            font-size: 1em; /* 字体大小 */
+            font-weight: bold; /* 字体加粗 */
+            text-align: center; /* 文字居中 */
+        }
+
         footer {
             margin-top: 40px;
             font-size: 0.8em;
@@ -362,7 +377,14 @@
     </div>
 </div>
 
+<!-- 临时公告 -->
+<div class="temp-announce">
+    <p>📢 有生无熟的资源：可以使用一些浏览器插件，Up亲测推荐给大家，可以搜索：沉浸式翻译，Language Reactor
+    <br>安装了插件以后可以直接在视频上看到双语字幕（且说的是人话）</p>
+</div>
 
+
+<!-- 留言 -->
 <div class="comment-section">
     <h3>想看什么/想聊什么可以留言！匿名，别担心</h3>
     <form id="commentForm">
@@ -373,7 +395,7 @@
     <div id="commentList"></div>
 </div>
 
-<!-- 留言 -->
+
 <script>
     document.getElementById('commentForm').addEventListener('submit', function(event) {
         event.preventDefault(); // 阻止表单默认提交行为

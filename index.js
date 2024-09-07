@@ -9,7 +9,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -38,7 +37,6 @@ app.get('/api/like-count', async (req, res) => {
 // Update like count
 app.post('/api/like', async (req, res) => {
     try {
-        // First, get the current like count
         const { data: currentData, error: fetchError } = await supabase
             .from('likes')
             .select('like_count')
@@ -49,10 +47,8 @@ app.post('/api/like', async (req, res) => {
             throw fetchError;
         }
 
-        // Increment the like count
         const newLikeCount = (currentData.like_count || 0) + 1;
 
-        // Update the like count
         const { error: updateError } = await supabase
             .from('likes')
             .update({ like_count: newLikeCount })
@@ -103,7 +99,8 @@ app.post('/api/comments', async (req, res) => {
             throw error;
         }
 
-        res.json(data[0]);
+        // 返回成功信息
+        res.json({ message: 'Comment added' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -115,6 +112,7 @@ app.listen(PORT, () => {
 });
 
 module.exports = app; // 导出 app 实例
+
 
 
 /*

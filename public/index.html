@@ -324,18 +324,18 @@
     <!-- 第一个Block -->
     <div style="background-color: #f9f9f9; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 350px; text-align: center;">
         <img src="assets/xhsqr.png" alt="QR Code" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px;">
-        <p style="margin-top: 15px; font-size: 1.1em; color: #333;">如果b站的网友还在，欢迎关注xhs获取更新！</p>
+        <p style="margin-top: 15px; font-size: 1.1em; color: #333;">如果b站的网友还在，欢迎关注xhs！</p>
     </div>
 
     <!-- 第二个Block -->
     <div style="background-color: #f9f9f9; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 350px; text-align: center;">
         <img src="assets/wbqr.jpeg" alt="Another Image" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px;">
-        <p style="margin-top: 15px; font-size: 1.1em; color: #333;">如果b站的网友还在，欢迎关注微博获取更新！</p>
+        <p style="margin-top: 15px; font-size: 1.1em; color: #333;">欢迎关注微博！</p>
     </div>
 </div>
 
 <div class="comment-section">
-    <h3>想看什么/想聊什么可以留言，提交后【刷新】可以看见之前留言哦</h3>
+    <h3>想看什么/想聊什么可以留言！匿名，别担心</h3>
     <form id="commentForm">
         <textarea id="commentContent" placeholder="请输入留言内容" rows="4" cols="50" required></textarea>
         <br>
@@ -344,6 +344,7 @@
     <div id="commentList"></div>
 </div>
 
+<!-- 留言 -->
 <script>
     document.getElementById('commentForm').addEventListener('submit', function(event) {
         event.preventDefault(); // 阻止表单默认提交行为
@@ -363,8 +364,12 @@
             if (data.message === 'Comment added') {
                 // 清空留言内容
                 document.getElementById('commentContent').value = '';
-                // 重新加载留言列表
-                loadComments();
+
+                // 立即将新留言添加到留言列表，而不必等待重新加载
+                const commentList = document.getElementById('commentList');
+                const newCommentDiv = document.createElement('div');
+                newCommentDiv.textContent = content; // 直接使用新留言内容
+                commentList.insertBefore(newCommentDiv, commentList.firstChild); // 插入到列表顶部
             }
         })
         .catch(error => console.error('Error:', error));
@@ -387,6 +392,8 @@
 
     // 加载留言列表
     document.addEventListener('DOMContentLoaded', loadComments);
+
+
 </script>
 
 
@@ -410,6 +417,7 @@
 </div>
 
 
+<!--点赞-->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Fetch like count when the page loads
@@ -422,15 +430,22 @@
 
         // Like button event
         document.getElementById('likeButton').addEventListener('click', () => {
+            // 获取当前的点赞数并立即在前端更新
+            let likeCountElement = document.getElementById('likeCount');
+            let currentLikeCount = parseInt(likeCountElement.textContent, 10);
+            likeCountElement.textContent = currentLikeCount + 1;
+
+            // 异步发送点赞请求
             fetch('/api/like', { method: 'POST' })
                 .then(response => response.json())
                 .then(() => {
-                    // Fetch the updated like count after liking
+                    // 如果需要，可以根据后端返回的最新点赞数更新前端
                     return fetch('/api/like-count');
                 })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('likeCount').textContent = data.like_count;
+                    // 确保前端与服务器同步点赞数
+                    likeCountElement.textContent = data.like_count;
                 })
                 .catch(error => console.error('Error:', error));
         });

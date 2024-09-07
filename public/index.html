@@ -275,6 +275,34 @@
             color: #666;
         }
 
+        /*搜索*/
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .styled-search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s ease;
+        }
+
+        .styled-search-box:focus {
+            outline: none;
+            border-color: #44A08D; /* Change border color when focused */
+        }
+
+        .styled-search-box::placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
         footer {
             margin-top: 40px;
             font-size: 0.8em;
@@ -323,16 +351,17 @@
 <div style="display: flex; justify-content: center; padding: 10px; gap: 20px;">
     <!-- 第一个Block -->
     <div style="background-color: #f9f9f9; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 350px; text-align: center;">
-        <img src="assets/xhsqr.png" alt="QR Code" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px;">
+        <img src="assets/xhsqr.png" alt="QR Code" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px; display: block; margin: 0 auto;">
         <p style="margin-top: 15px; font-size: 1.1em; color: #333;">如果b站的网友还在，欢迎关注xhs！</p>
     </div>
 
     <!-- 第二个Block -->
     <div style="background-color: #f9f9f9; padding: 10px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); width: 350px; text-align: center;">
-        <img src="assets/wbqr.jpeg" alt="Another Image" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px;">
+        <img src="assets/wbqr.jpeg" alt="Another Image" style="max-height: 300px; max-width: 100%; object-fit: contain; border-radius: 8px; display: block; margin: 0 auto;">
         <p style="margin-top: 15px; font-size: 1.1em; color: #333;">欢迎关注微博！</p>
     </div>
 </div>
+
 
 <div class="comment-section">
     <h3>想看什么/想聊什么可以留言！匿名，别担心</h3>
@@ -448,6 +477,28 @@
                     likeCountElement.textContent = data.like_count;
                 })
                 .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+
+<!--搜索-->
+<div class="search-container">
+    <input type="text" id="searchBox" class="styled-search-box" placeholder="搜索资源">
+</div>
+
+<script>
+    document.getElementById('searchBox').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const blocks = document.querySelectorAll('.block-container .block');
+
+        blocks.forEach(block => {
+            const h2Text = block.querySelector('h2').textContent.toLowerCase();
+            
+            if (h2Text.includes(searchTerm)) {
+                block.style.display = ''; // Show the block (default display)
+            } else {
+                block.style.display = 'none'; // Hide the block
+            }
         });
     });
 </script>

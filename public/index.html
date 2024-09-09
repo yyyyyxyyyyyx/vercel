@@ -290,35 +290,23 @@
         /* 分页按钮样式 */
         .pagination-button {
             padding: 8px 16px;
-            margin: 0 5px;
-            border: none;
-            background-color: #44A08D;
-            color: white;
+            margin: 0 4px;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
             cursor: pointer;
-            border-radius: 12px;
-            transition: background-color 0.3s, box-shadow 0.3s;
-            font-size: 1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
         }
 
         .pagination-button:hover {
-            background-color: #358a70;
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .pagination-button.active {
-            background-color: #2c6f58;
+            background-color: #44A08D;
             color: white;
-            cursor: default;
         }
 
         .pagination-button:disabled {
             background-color: #ddd;
-            color: #888;
             cursor: not-allowed;
-            box-shadow: none;
         }
-
 
 
         /*搜索*/
@@ -498,6 +486,7 @@
         for (let i = 1; i <= totalPages; i++) {
             const button = document.createElement('button');
             button.textContent = i;
+            button.className = 'pagination-button'; // 添加这一行，确保每个按钮都有正确的样式类名
             button.disabled = i === currentPage; // 当前页禁用按钮
             button.addEventListener('click', () => {
                 loadComments(i); // 加载点击的页码
@@ -505,6 +494,7 @@
             paginationContainer.appendChild(button);
         }
     }
+
 
     // 初次加载第一页的留言列表
     document.addEventListener('DOMContentLoaded', () => {

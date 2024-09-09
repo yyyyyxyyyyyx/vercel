@@ -69,14 +69,14 @@ app.get('/api/comments', async (req, res) => {
     try {
         const { page = 1, limit = 5 } = req.query;
         const start = (page - 1) * limit;
-        const end = start + limit - 1;
+        const end = start + limit; // 确保只获取 limit 数量的评论
 
         // 获取分页的评论
         const { data, error, count } = await supabase
             .from('comments')
             .select('*', { count: 'exact' })
             .order('created_at', { ascending: false })
-            .range(start, end); // 只获取当前页的数据
+            .range(start, end - 1); // 获取从 start 到 end - 1 的评论
 
         if (error) {
             throw error;
@@ -93,6 +93,7 @@ app.get('/api/comments', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
 
 
 // Add a new comment

@@ -64,23 +64,38 @@ app.post('/api/like', async (req, res) => {
     }
 });
 
-// Get comments
+// get comment
 app.get('/api/comments', async (req, res) => {
     try {
-        const { data, error } = await supabase
+        const page = parseInt(req.query.page, 10) || 1;
+        const limit = parseInt(req.query.limit, 10) || 5;
+        const start = (page - 1) * limit;
+        
+        console.log(`Page: ${page}, Limit: ${limit}, Start: ${start}`); // 调试信息
+
+        // 获取分页的评论
+        const { data, error, count } = await supabase
             .from('comments')
-            .select('*')
-            .order('created_at', { ascending: false });
+            .select('*', { count: 'exact' })
+            .order('created_at', { ascending: false })
+            .range(start, start + limit - 1);
 
         if (error) {
             throw error;
         }
 
-        res.json(data);
+        const totalPages = Math.ceil(count / limit);
+
+        res.json({
+            comments: data,
+            totalPages,
+            currentPage: page,  // 这里直接使用 page
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
+
 
 // Add a new comment
 app.post('/api/comments', async (req, res) => {

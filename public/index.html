@@ -275,6 +275,37 @@
             color: #666;
         }
 
+        .pagination-button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: none;
+            background-color: #44A08D;
+            color: white;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            font-size: 1em;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .pagination-button:hover {
+            background-color: #358a70;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .pagination-button.active {
+            background-color: #2c6f58;
+            color: white;
+            cursor: default;
+        }
+
+        .pagination-button:disabled {
+            background-color: #ddd;
+            color: #888;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
         /*搜索*/
         .search-container {
             display: flex;
@@ -390,57 +421,53 @@
         <button type="submit">提交留言</button>
     </form>
     <div id="commentList"></div>
+    <div id="pagination"></div> <!-- 分页按钮容器 -->
 </div>
 
-
 <script>
-    document.getElementById('commentForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // 阻止表单默认提交行为
+    let currentPage = 1;
+    const limit = 5; // 每页显示的留言数量
 
-        const content = document.getElementById('commentContent').value;
-
-        // 发送留言内容到服务器
-        fetch('/api/comments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ content }),
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Comment added') {
-                // 清空留言内容
-                document.getElementById('commentContent').value = '';
-
-                // 立即将新留言添加到留言列表，而不必等待重新加载
-                const commentList = document.getElementById('commentList');
-                const newCommentDiv = document.createElement('div');
-                newCommentDiv.textContent = content; // 直接使用新留言内容
-                commentList.insertBefore(newCommentDiv, commentList.firstChild); // 插入到列表顶部
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-
-    function loadComments() {
-        fetch('/api/comments')
+    function loadComments(page = 1) {
+        fetch(`/api/comments?page=${page}&limit=${limit}`)
             .then(response => response.json())
             .then(data => {
                 const commentList = document.getElementById('commentList');
-                commentList.innerHTML = '';
-                data.forEach(comment => {
+                commentList.innerHTML = ''; // 清空留言列表
+
+                data.comments.forEach(comment => {
                     const div = document.createElement('div');
                     div.textContent = comment.content;
                     commentList.appendChild(div);
                 });
+
+                // 更新分页按钮
+                updatePagination(data.totalPages, data.currentPage);
             })
             .catch(error => console.error('Error:', error));
     }
 
-    // 加载留言列表
-    document.addEventListener('DOMContentLoaded', loadComments);
+    // 创建分页按钮
+    function updatePagination(totalPages, currentPage) {
+        const paginationContainer = document.getElementById('pagination');
+        paginationContainer.innerHTML = ''; // 清空分页按钮
 
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.disabled = i === currentPage; // 当前页禁用按钮
+            button.addEventListener('click', () => {
+                loadComments(i); // 加载点击的页码
+            });
+            paginationContainer.appendChild(button);
+        }
+    }
+
+
+    // 加载第一页的留言列表
+    document.addEventListener('DOMContentLoaded', () => {
+        loadComments(currentPage); // 初次加载第一页
+    });
 
 </script>
 

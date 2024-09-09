@@ -221,7 +221,7 @@
             color: #FF4500; /* Match the like button color */
         }
 
-        /*留言框样式*/
+        /* 留言框样式 */
         .comment-section {
             margin-top: 20px;
             max-width: 600px;
@@ -234,20 +234,27 @@
             gap: 10px;
         }
 
-        #commentForm input,
-        #commentForm textarea {
+        #commentForm textarea,
+        #commentForm button {
             padding: 10px;
+            border-radius: 8px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+        }
+
+        #commentForm textarea {
+            font-size: 1em;
         }
 
         #commentForm button {
-            padding: 10px;
             background-color: #44A08D;
             color: white;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #commentForm button:hover {
+            background-color: #358a70;
         }
 
         #commentList {
@@ -255,26 +262,32 @@
         }
 
         .comment {
-            padding: 10px;
+            padding: 15px;
             background-color: #fff;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s, transform 0.3s;
         }
 
-        .comment strong {
-            font-size: 1.2em;
+        .comment:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: scale(1.02);
         }
 
         .comment p {
-            margin: 5px 0;
+            margin: 0;
+            font-size: 1em;
+            color: #333;
         }
 
         .comment small {
             color: #666;
+            font-size: 0.9em;
         }
 
+        /* 分页按钮样式 */
         .pagination-button {
             padding: 8px 16px;
             margin: 0 5px;
@@ -282,7 +295,7 @@
             background-color: #44A08D;
             color: white;
             cursor: pointer;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: background-color 0.3s, box-shadow 0.3s;
             font-size: 1em;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -305,6 +318,8 @@
             cursor: not-allowed;
             box-shadow: none;
         }
+
+
 
         /*搜索*/
         .search-container {
@@ -421,13 +436,40 @@
         <button type="submit">提交留言</button>
     </form>
     <div id="commentList"></div>
-    <div id="pagination-button"></div> <!-- 分页按钮容器 -->
+    <div id="pagination"></div> <!-- 分页按钮容器 -->
 </div>
 
 <script>
     let currentPage = 1;
     const limit = 5; // 每页显示的留言数量
 
+    // 提交留言
+    document.getElementById('commentForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 阻止表单的默认提交行为
+
+        const content = document.getElementById('commentContent').value;
+
+        fetch('/api/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ content }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === 'Comment added') {
+                // 清空留言内容
+                document.getElementById('commentContent').value = '';
+
+                // 重新加载当前页的留言
+                loadComments(currentPage);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+
+    // 加载留言
     function loadComments(page = 1) {
         fetch(`/api/comments?page=${page}&limit=${limit}`)
             .then(response => response.json())
@@ -437,6 +479,7 @@
 
                 data.comments.forEach(comment => {
                     const div = document.createElement('div');
+                    div.className = 'comment'; // 使用 comment 类
                     div.textContent = comment.content;
                     commentList.appendChild(div);
                 });
@@ -463,13 +506,12 @@
         }
     }
 
-
-    // 加载第一页的留言列表
+    // 初次加载第一页的留言列表
     document.addEventListener('DOMContentLoaded', () => {
         loadComments(currentPage); // 初次加载第一页
     });
-
 </script>
+
 
 
 <!-- 弹窗 -->

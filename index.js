@@ -67,18 +67,16 @@ app.post('/api/like', async (req, res) => {
 // get comment
 app.get('/api/comments', async (req, res) => {
     try {
-        const page = parseInt(req.query.page, 10) || 1;
-        const limit = parseInt(req.query.limit, 10) || 5;
+        const { page = 1, limit = 5 } = req.query;
         const start = (page - 1) * limit;
-        
-        console.log(`Page: ${page}, Limit: ${limit}, Start: ${start}`); // 调试信息
+        const end = start + limit - 1;
 
         // 获取分页的评论
         const { data, error, count } = await supabase
             .from('comments')
             .select('*', { count: 'exact' })
             .order('created_at', { ascending: false })
-            .range(start, start + limit - 1);
+            .range(start, end); // 只获取当前页的数据
 
         if (error) {
             throw error;
@@ -89,7 +87,7 @@ app.get('/api/comments', async (req, res) => {
         res.json({
             comments: data,
             totalPages,
-            currentPage: page,  // 这里直接使用 page
+            currentPage: parseInt(page, 10),
         });
     } catch (error) {
         res.status(500).json({ error: error.message });

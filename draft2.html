@@ -21,6 +21,9 @@
     </script>
 
 
+    <link href="/public/tailwind.css" rel="stylesheet">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>曾经b站@609498878</title>
@@ -61,48 +64,52 @@
         }
 
         /*block的样式*/
-          .block-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-          }
-
-          #tv-shows-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        .block-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
-          }
+        }
 
-          .block {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-          }
-
-          .block:hover {
-            transform: translateY(-5px);
-          }
-
-          .block img {
+        .block {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            padding: 20px;
+            max-width: 700px;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-          }
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none; /* 去掉链接下划线 */
+            color: inherit; /* 保持文本颜色一致 */
+        }
 
-          .block .content {
-            padding: 15px;
-          }
+        .block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-          .block .content h2 {
-            font-size: 1rem;
+        .block img {
+            width: 150px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .content h2 {
             margin: 0;
-          }
+            font-size: 1.5em;
+            color: #444;
+        }
 
         .links {
             display: flex;
@@ -372,7 +379,6 @@
     }
 </script>
 
-
 </head>
 <body>
 
@@ -577,95 +583,94 @@
 
 
 <div class="block-container">
-  <h2>2024入股不亏综艺专区</h2>
-  <div id="tv-shows-container"></div>
+    <h2>2024入股不亏综艺专区</h2>
+    
+    <a href="om.html" class="block" onclick="event.preventDefault(); showCustomDialog('om.html')">
+        <img src="assets/om.jpg" alt="2024超好看综艺 曼哈顿金牌经纪 Owning Manhattan">
+        <div class="content">
+            <h2>【熟肉】2024超好看新综 曼哈顿金牌经纪 Owning Manhattan 【全8集】</h2>
+        </div>
+    </a>
+
+    <a href="mc.html" class="block" onclick="event.preventDefault(); showCustomDialog('mc.html')">
+        <img src="assets/mc.jpg" alt="2024长青综艺回归 厨艺大师第14季 MasterChef">
+        <div class="content">
+            <h2>【生肉】2024长青综艺回归 厨艺大师第14季 MasterChef 【更至EP15】【会更完】</h2>
+        </div>
+    </a>
+
+    <a href="so.html" class="block" onclick="event.preventDefault(); showCustomDialog('so.html')">
+        <img src="assets/so.jpg" alt="2024无脑撕逼下饭抓马 橘子郡豪宅 Selling the OC">
+        <div class="content">
+            <h2>【上新】【熟肉】2024无脑撕逼下饭抓马 橘子郡豪宅 Selling the OC 【全3季一网打尽】 </h2>
+        </div>
+    </a>
+
+    <a href="hk.html" class="block" onclick="event.preventDefault(); showCustomDialog('hk.html')">
+        <img src="assets/hk.jpg" alt="2023网友提名经典综艺 地狱厨房第22季 Hell's Kitchen">
+        <div class="content">
+            <h2>【补档】【熟肉】2023网友提名经典综艺 地狱厨房第22季 Hell's Kitchen 【全16集】</h2>
+        </div>
+    </a>
+
+    <a href="tm.html" class="block" onclick="event.preventDefault(); showCustomDialog('tm.html')">
+        <img src="assets/tm.jpg" alt="2024男狼人女狼人向前冲 谁是内鬼第二季 The Mole">
+        <div class="content">
+            <h2>【熟肉】2024男狼人女狼人向前冲 谁是内鬼第二季 The Mole 【全10集】 亲测好看信我没错！</h2>
+        </div>
+    </a>
+    
+    <a href="tar36.html" class="block" onclick="event.preventDefault(); showCustomDialog('tar36.html')">
+        <img src="assets/tar36.jpg" alt="2024经典综艺回归 极速前进第35、36季 The Amazing Race">
+        <div class="content">
+            <h2>【熟肉】2024经典综艺回归 极速前进第35、36季 The Amazing Race 【在线全集自取】</h2>
+        </div>
+    </a>
+
+    <a href="br.html" class="block" onclick="event.preventDefault(); showCustomDialog('br.html')">
+        <img src="assets/br.jpg" alt="2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】">
+        <div class="content">
+            <h2>【熟肉】2024烘焙神仙打架 全美蓝带大厨争霸赛 Blue Ribbon Baking Championship 【全8集】</h2>
+        </div>
+    </a>
+
+    <a href="bbh.html" class="block" onclick="event.preventDefault(); showCustomDialog('bbh.html')">
+        <img src="assets/bbh.jpg" alt="2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】">
+        <div class="content">
+            <h2>【熟肉】2024土豪撕逼回归 比弗利山豪宅经纪第二季 Buying Beverly Hills 【全10集】</h2>
+        </div>
+    </a>
+
+    <a href="ba.html" class="block" onclick="event.preventDefault(); showCustomDialog('ba.html')">
+        <img src="assets/ba.jpg" alt="2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】">
+        <div class="content">
+            <h2>【熟肉】2024土狗自我提升 美哉琉璃：巧匠大比拼第四季 Blown Away 【更至EP01】【催更请留言】</h2>
+        </div>
+    </a>
+
+    <h2>太后Lisa Vanderpump专区</h2>
+    <a href="vv.html" class="block" onclick="event.preventDefault(); showCustomDialog('vv.html')">
+        <img src="assets/vv.jpg" alt="2024抓马综艺 范德普别墅 Vanderpump Villa">
+        <div class="content">
+            <h2>【熟肉】2024抓马综艺 范德普别墅 豪宅牛马 Vanderpump Villa 【全11集】</h2>
+        </div>
+    </a>
+
+    <a href="vpr.html" class="block" onclick="event.preventDefault(); showCustomDialog('vpr.html')">
+        <img src="assets/vpr.jpg" alt="2024太后经典狗血大戏 太后的规则 Vanderpump Rules">
+        <div class="content">
+            <h2>【生肉】2024太后经典狗血大戏 太后的规则 Vanderpump Rules 第11季 【全19集】</h2>
+        </div>
+    </a>
+
+    <a href="fs.html" class="block" onclick="event.preventDefault(); showCustomDialog('fs.html')">
+        <img src="assets/fs.jpg" alt="2024狗蛋vs太后 美食未来星第二季 Gordon Ramsay's Future Food Stars">
+        <div class="content">
+            <h2>【生肉】2024狗蛋vs太后 美食未来星第二季 Gordon Ramsay's Future Food Stars 【更至EP02】【催更请留言】</h2>
+        </div>
+    </a>
+
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', async function() {
-    console.log('DOM fully loaded and parsed');
-    const SUPABASE_URL = 'https://mnizjqlixppxsrvixdyg.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1uaXpqcWxpeHBweHNydml4ZHlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjQ5MzcxMzgsImV4cCI6MjA0MDUxMzEzOH0.33xWWPYoRD0_nqxpdGFz3lK5hkcnOBcDQ06UfxVJXzw';
-    
-    try {
-      console.log('Attempting to initialize Supabase client...');
-      const { createClient } = supabase;
-      window.supabaseClient = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      console.log('Supabase client initialized successfully.');
-      await loadTVShows();
-    } catch (error) {
-      console.error('Error initializing Supabase client:', error);
-    }
-  });
-
-async function loadTVShows() {
-  console.log('Attempting to load TV shows...');
-  if (!window.supabaseClient) {
-    console.error('Supabase client not initialized!');
-    return;
-  }
-  try {
-    const { data, error } = await window.supabaseClient
-      .from('tv_shows')
-      .select('*')
-      .order('created_at', { ascending: false });
-    
-    if (error) throw error;
-    
-    console.log('Fetched TV shows:', data);
-    
-    const container = document.getElementById('tv-shows-container');
-    if (!container) {
-      console.error('TV shows container not found!');
-      return;
-    }
-    
-    data.forEach(show => {
-      console.log('Processing show:', show);
-      const block = document.createElement('a');
-      block.href = `show-template.html?id=${show.details_id}`; // 使用 details_id
-      block.className = 'block';
-      block.onclick = (event) => {
-        event.preventDefault();
-        showCustomDialog(`show-template.html?id=${show.details_id}`); // 使用 details_id
-      };
-      const img = document.createElement('img');
-      img.src = show.image_url;
-      img.alt = show.title;
-      const content = document.createElement('div');
-      content.className = 'content';
-      const title = document.createElement('h2');
-      title.textContent = show.title;
-      content.appendChild(title);
-      block.appendChild(img);
-      block.appendChild(content);
-      container.appendChild(block);
-    });
-    console.log('TV shows loaded successfully.');
-  } catch (error) {
-    console.error('Error loading TV shows:', error);
-  }
-}
-
-  function showCustomDialog(url) {
-    console.log('Opening custom dialog for:', url);
-    // 显示遮罩层和自定义弹窗
-    document.querySelector('.overlay').style.display = 'block';
-    document.querySelector('.custom-dialog').style.display = 'block';
-    // 给 "确定" 按钮绑定跳转链接
-    document.querySelector('.confirm-btn').onclick = function() {
-      window.location.href = url;
-    };
-  }
-
-  function closeCustomDialog() {
-    // 关闭自定义弹窗和遮罩层
-    document.querySelector('.overlay').style.display = 'none';
-    document.querySelector('.custom-dialog').style.display = 'none';
-  }
-</script>
 
 
 </body>

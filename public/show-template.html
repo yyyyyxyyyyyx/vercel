@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节目详情</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/show-loader.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-color: #44A08D;
+            --light-color: #E8F3F1;
+            --dark-color: #2C6B5D;
+            --accent-color: #6ABEA7;
+            --text-color: #333333;
+            --background-color: #F5F9F8;
+        }
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: var(--dark-color);
+            font-size: 2.3em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--main-color);
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: var(--main-color);
+            font-size: 1.8em;
+        }
+        .announcement-bar {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-size: 1.1em;
+            border-left: 5px solid var(--main-color);
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .links {
+            margin-top: 25px;
+        }
+        .links a {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: var(--main-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .links a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .back-button {
+            margin-top: 30px;
+        }
+        .back-button a {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .back-button a:hover {
+            background-color: var(--dark-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--main-color);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>感谢各位粉丝的支持！欢迎扩散！</h1>
+
+        <div class="announcement-bar">
+            前up留言：b站彻底被封了，也不用关注或一键三连了。如果大家还在关注，请在首页点赞留言让我看到大家的双手哈哈
+        </div>
+
+        <div id="banner" class="banner"></div>
+
+        <h2 id="show-title"></h2>
+
+        <div id="download-links" class="links"></div>
+
+        <div class="back-button">
+            <a href="index.html">更多综艺</a>
+        </div>
+    </div>
+
+    <footer>
+        视频资源仅用于测试和学习交流，一切版权归原创者所有。 xhs@609498878 wb@runawayonline
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadShowContent);
+    </script>
+</body>
+</html>
